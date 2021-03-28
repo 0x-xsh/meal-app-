@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/screens/categories_screen.dart';
 
 void main() => runApp(new MyApp());
 
@@ -9,29 +10,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "MealApp",
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.pink,
+        accentColor: Colors.amber,
+        canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        textTheme:  ThemeData.dark().textTheme.copyWith(
+          body1: TextStyle(),
+          body2: TextStyle(),
+          title: TextStyle(
+            fontSize: 22,
+            fontFamily: 'RobotoCondensed'
+
+          )
+        )
       ),
-      home: new MyHomePage(title: 'mealapp'),
+      home: new categories_screen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => new _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-    );
-  }
-}

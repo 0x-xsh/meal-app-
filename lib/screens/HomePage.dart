@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:mealapp/screens/CategoriesScreen.dart';
 import 'package:mealapp/screens/FavouritScreen.dart';
+import 'package:mealapp/widgets/MainDrawer.dart';
 
 class BottomNavBar extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   final List<Map<String, Object>> _pages = [
     {"page": CategoriesScreen(), "title": "Categories"},
     {"page": FavouritScreen(), "title": "Favourites"}
-  ];
+  ]; //order of the list == ordre of the icons from left to right
 
   int _selectedPageIndex = 0;
 
@@ -27,13 +28,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(title: Text(_pages[_selectedPageIndex]["title"])),
+      drawer: MainDrawer(),
       body: _pages[_selectedPageIndex]["page"],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPageIndex,
         unselectedItemColor: Colors.black,
         selectedItemColor: Colors.red,
-        onTap: _selectPage,
         items: [
           BottomNavigationBarItem(
               icon: Icon(
@@ -49,6 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 style: TextStyle(color: Colors.red),
               )),
         ],
+        onTap: _selectPage,
       ),
     );
   }

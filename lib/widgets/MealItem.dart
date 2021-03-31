@@ -1,48 +1,68 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../screens/MealDetailScreen.dart';
 
 import '../models/Meal.dart';
 
 class MealItem extends StatelessWidget {
+  final String id;
   final String imageUrl;
   final int duration;
   final String title;
   final Complexity complexity;
   final Affordability affordability;
 
-  const MealItem(
-      {@required this.imageUrl,
-      @required this.duration,
-      @required this.title,
-      @required this.complexity,
-      @required this.affordability});
-  String get complexityString{
-    switch(complexity){
-      case Complexity.Simple : return "Simple" ; break;
-      case Complexity.Challenging : return "Challenging" ; break;
-      case Complexity.Hard : return "Hard" ; break;
-      default: return "Unk";
-    }
-  }
-  String get affordabilityString{
-    switch(affordability){
-      case Affordability.Affordable : return "Affordable" ; break;
-      case Affordability.Luxurious : return "Luxurious" ; break;
-      case Affordability.Pricey : return "Pricey" ; break;
-      default: return "Unk";
+  const MealItem({ @required this.id,
+    @required this.imageUrl,
+    @required this.duration,
+    @required this.title,
+    @required this.complexity,
+    @required this.affordability});
+
+  String get complexityString {
+    switch (complexity) {
+      case Complexity.Simple:
+        return "Simple";
+        break;
+      case Complexity.Challenging:
+        return "Challenging";
+        break;
+      case Complexity.Hard:
+        return "Hard";
+        break;
+      default:
+        return "Unk";
     }
   }
 
+  String get affordabilityString {
+    switch (affordability) {
+      case Affordability.Affordable:
+        return "Affordable";
+        break;
+      case Affordability.Luxurious:
+        return "Luxurious";
+        break;
+      case Affordability.Pricey:
+        return "Pricey";
+        break;
+      default:
+        return "Unk";
+    }
+  }
 
-  void selectMeal() {}
+  void selectMeal(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(MealDetailScreen.routeName, arguments:id);
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: selectMeal,
+        borderRadius: BorderRadius.circular(15),
+        onTap: () => selectMeal(context),
         child: Card(
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           elevation: 4,
           margin: EdgeInsets.all(10),
           child: Column(
@@ -66,7 +86,7 @@ class MealItem extends StatelessWidget {
                     child: Container(
                       width: 300,
                       padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+                      EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                       color: Colors.black54,
                       child: Text(
                         title,
@@ -89,7 +109,6 @@ class MealItem extends StatelessWidget {
                         SizedBox(width: 6),
                         Text(
                           "$duration min",
-
                           style: TextStyle(color: Colors.black),
                         )
                       ],

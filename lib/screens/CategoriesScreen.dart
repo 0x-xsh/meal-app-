@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:mealapp/dummy_data.dart';
-import 'package:mealapp/widgets/CategoryItem.dart';
+import '../dummy_data.dart';
+import '../screens/BottomNavBar.dart';
+import '../widgets/CategoryItem.dart';
 
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     bottomNavigationBar: BottomNavBar(),
+
+
       appBar: AppBar(
         title: Text("MealApp"),
       ),

@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mealapp/dummy_data.dart';
 
@@ -21,8 +19,10 @@ class MealDetailScreen extends StatelessWidget {
 
     Widget sectionContainer({String containerName}) {
       return Container(
+
           height: 300,
           decoration: BoxDecoration(
+            color: Colors.white,
               border: Border.all(color: Colors.red),
               borderRadius: BorderRadius.circular(15)),
           margin: EdgeInsets.all(10),
@@ -33,7 +33,6 @@ class MealDetailScreen extends StatelessWidget {
               if (containerName == "Ingredients") {
                 return Card(
                   color: Colors.orangeAccent,
-
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
@@ -44,11 +43,13 @@ class MealDetailScreen extends StatelessWidget {
                 );
               } else {
                 return ListTile(
-                  leading: CircleAvatar(
-                    child: Text( "# ${index+1}")),
+                  leading: CircleAvatar(child: Text("# ${index + 1}")), //Circular avatar is pink because it inherited the primaryTheme color
                   title: Padding(
-                    padding: const EdgeInsets.only(bottom : 10.0),
-                    child: Text('# ${selectedMeal.steps[index]}', style: TextStyle(color: Colors.black),),
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Text(
+                      '# ${selectedMeal.steps[index]}',
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                 );
               }
@@ -68,8 +69,7 @@ class MealDetailScreen extends StatelessWidget {
                       width: MediaQuery.of(context).size.width - 50,
                       margin: EdgeInsets.only(top: 20),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
+                        borderRadius: BorderRadius.circular(20),),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(15),
                           child: Image.network(selectedMeal.imageUrl)))),
@@ -78,9 +78,7 @@ class MealDetailScreen extends StatelessWidget {
               sectionContainer(containerName: "Ingredients"),
               sectionTitle(context, "Steps"),
               sectionContainer(containerName: "Steps"),
-              SizedBox(
-                height: 10,
-              ),
+              SizedBox(height: 10,),
             ],
           ),
         ));

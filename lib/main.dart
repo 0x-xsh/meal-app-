@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mealapp/screens/BottomNavBar.dart';
 import 'package:mealapp/screens/FavouritScreen.dart';
 import 'package:mealapp/screens/MealDetailScreen.dart';
 import './screens/CategoriesScreen.dart';
@@ -9,10 +10,10 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "MealApp",
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.pink,
         accentColor: Colors.amber,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
@@ -25,10 +26,10 @@ class MyApp extends StatelessWidget {
         )
       ),
       routes: {
-        '/' : (context) => CategoriesScreen(), //root
+        '/' : (context) => BottomNavBar(), //root
         CategoryMealsScreen.routeName : (context) => CategoryMealsScreen(),
         MealDetailScreen.routeName : (context) => MealDetailScreen(),
-        FavouritScreen.routeName : (context) => FavouritScreen()
+
 
 
 

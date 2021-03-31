@@ -1,1 +1,1 @@
-primitive app covering the basics of flutter.
+Primitive app covering the basics of flutter.

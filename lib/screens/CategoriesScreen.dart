@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../dummy_data.dart';
-import 'BottomNavBar.dart';
+import 'HomePage.dart';
 import '../widgets/CategoryItem.dart';
 
 class CategoriesScreen extends StatelessWidget {
